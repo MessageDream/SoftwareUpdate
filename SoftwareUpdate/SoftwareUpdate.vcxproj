@@ -103,19 +103,18 @@
     <None Include="res\SoftwareUpdate.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyClassLib.h" />
-    <ClInclude Include="MyFuncLib.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SoftwareUpdate.h" />
     <ClInclude Include="SoftwareUpdateDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ZClassLib.h" />
     <ClInclude Include="ZFileSocket.h" />
     <ClInclude Include="ZSocket.h" />
     <ClInclude Include="ZStringSocket.h" />
+    <ClInclude Include="ZUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyFuncLib.cpp" />
     <ClCompile Include="SoftwareUpdate.cpp" />
     <ClCompile Include="SoftwareUpdateDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -125,6 +124,7 @@
     <ClCompile Include="ZFileSocket.cpp" />
     <ClCompile Include="ZSocket.cpp" />
     <ClCompile Include="ZStringSocket.cpp" />
+    <ClCompile Include="ZUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SoftwareUpdate.rc" />

@@ -48,13 +48,13 @@
     <ClInclude Include="ZFileSocket.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MyClassLib.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyFuncLib.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ZStringSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ZUtil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ZClassLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,10 +74,10 @@
     <ClCompile Include="ZSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyFuncLib.cpp">
+    <ClCompile Include="ZStringSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ZStringSocket.cpp">
+    <ClCompile Include="ZUtil.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
