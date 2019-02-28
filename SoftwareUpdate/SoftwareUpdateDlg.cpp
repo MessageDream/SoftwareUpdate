@@ -58,7 +58,6 @@ CSoftwareUpdateDlg::CSoftwareUpdateDlg(CWnd* pParent /*=NULL*/)
 	, m_nRetryTimes(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	ZSocket::CallSocketDll();
 }
 
 CSoftwareUpdateDlg::~CSoftwareUpdateDlg()
@@ -69,7 +68,6 @@ CSoftwareUpdateDlg::~CSoftwareUpdateDlg()
 		CloseHandle(m_hEvtExitUpdate);
 		m_hEvtExitUpdate=NULL;
 	}
-	ZSocket::UncallSocketDll();
 }
 
 void CSoftwareUpdateDlg::DoDataExchange(CDataExchange* pDX)
@@ -236,11 +234,9 @@ UINT CSoftwareUpdateDlg::UpdateThreadFunc(LPVOID lpParam)
 	strHead.Format(_T("[%06d01]"),strDataIn.GetLength()+10);
 	strDataIn=strHead+strDataIn;
 	int nRtn=0;
-	pMainDlg->m_filesock.InitSocket();
 	nRtn=pMainDlg->m_filesock.Connect(g_sz_strParameter[0],g_sz_strParameter[1]);
 	if (nRtn)
 	{
-		pMainDlg->m_filesock.CloseSocket();
 		SendMessageTimeout(pMainDlg->m_hWnd, WM_MSGRECVPRO, (WPARAM)nRtn, MSGUSER_UPDATERESULT, SMTO_BLOCK, 500, NULL);
 		SetEvent(pMainDlg->m_hEvtExitUpdate);
 		return 0;
@@ -248,7 +244,6 @@ UINT CSoftwareUpdateDlg::UpdateThreadFunc(LPVOID lpParam)
 	nRtn=pMainDlg->m_filesock.StringSend(strDataIn);
 	if(nRtn)
 	{
-		pMainDlg->m_filesock.CloseSocket();
 		SendMessageTimeout(pMainDlg->m_hWnd, WM_MSGRECVPRO, (WPARAM)nRtn, MSGUSER_UPDATERESULT, SMTO_BLOCK, 500, NULL);
 		SetEvent(pMainDlg->m_hEvtExitUpdate);
 		return 0;
@@ -268,7 +263,6 @@ UINT CSoftwareUpdateDlg::UpdateThreadFunc(LPVOID lpParam)
 	nRtn=pMainDlg->m_filesock.FileRecv();
 end:
 	pMainDlg->m_filesock.StringRecv(strFinish);
-	pMainDlg->m_filesock.CloseSocket();
 	SendMessageTimeout(pMainDlg->m_hWnd,WM_MSGRECVPRO,(WPARAM)nRtn, MSGUSER_UPDATERESULT,SMTO_BLOCK,500,NULL);
 	SetEvent(pMainDlg->m_hEvtExitUpdate);
 	return 0;
